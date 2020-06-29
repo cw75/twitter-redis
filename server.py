@@ -77,13 +77,13 @@ def run(create, sckt):
                 tid = str(uuid.uuid1())
                 tids.add(tid)
                 value = cp.dumps(uid + ': ' + tweet)
-                redis.put(tid, value)
+                redis.set(tid, value)
             reply_uids = np.random.choice(others, size=2, replace=False)
             for j, reply_uid in enumerate(reply_uids):
                 tid = str(uuid.uuid1())
                 tids.add(tid)
                 value = cp.dumps(reply_uid + ' reply: this is great!')
-                redis.put(tid, value)
+                redis.set(tid, value)
 
             kvs.put(uid, cp.dumps(tids))
 
@@ -114,11 +114,11 @@ def run(create, sckt):
                 payload = cp.dumps(result)
                 key = str(uuid.uuid1())
 
-                redis.put(key, payload)
+                redis.set(key, payload)
                 tids.append(key)
 
                 end = time.time()
-                redis.put(target_uid, cp.dumps(tids))
+                redis.set(target_uid, cp.dumps(tids))
             else:
                 #logging.info('read')
                 tweet = cp.loads(redis.get(tid))
