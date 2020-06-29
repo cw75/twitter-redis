@@ -20,7 +20,9 @@ logging.info(sys.argv[2])
 tid = int(sys.argv[2])
 
 startup_nodes = [{"host": "kvs.kvm9la.clustercfg.use1.cache.amazonaws.com", "port": "6379"}]
-redis = RedisCluster(startup_nodes=startup_nodes, decode_responses=False, skip_full_coverage_check=True)
+logging.info('Connecting to Redis')
+#redis = RedisCluster(startup_nodes=startup_nodes, decode_responses=False, skip_full_coverage_check=True)
+#logging.info('Connected')
 
 f = open('/graph', "rb")
 users, follow = cp.load(f)
