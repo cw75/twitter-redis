@@ -85,7 +85,7 @@ def run(create, sckt):
                 value = cp.dumps(reply_uid + ' reply: this is great!')
                 redis.set(tid, value)
 
-            kvs.put(uid, cp.dumps(tids))
+            redis.set(uid, cp.dumps(tids))
 
         return []
     else:
