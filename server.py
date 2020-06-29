@@ -116,7 +116,7 @@ def run(create, sckt):
                 key = str(uuid.uuid1())
 
                 redis.set(key, payload)
-                tids.append(key)
+                tids.add(key)
 
                 end = time.time()
                 redis.set(target_uid, cp.dumps(tids))
