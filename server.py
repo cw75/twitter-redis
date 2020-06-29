@@ -106,7 +106,7 @@ def run(create, sckt):
 
             tids = cp.loads(redis.get(target_uid))
             print(tids)
-            tid = np.random.choice(tids, size=1, replace=False).tolist()[0]
+            tid = np.random.choice(list(tids), size=1, replace=False).tolist()[0]
 
             start = time.time()
             if random.random() < 0.1:
