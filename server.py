@@ -105,6 +105,7 @@ def run(create, sckt):
             target_uid = np.random.choice(followers, size=1, replace=False).tolist()[0]
 
             tids = cp.loads(redis.get(target_uid))
+            print(tids)
             tid = np.random.choice(tids, size=1, replace=False).tolist()[0]
 
             start = time.time()
