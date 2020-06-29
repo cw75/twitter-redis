@@ -69,7 +69,7 @@ msg = sys.argv[1]
 ctx = zmq.Context(1)
 
 recv_socket = ctx.socket(zmq.PULL)
-recv_socket.bind('tcp://*:3000')
+recv_socket.bind('tcp://*:5000')
 
 sent_msgs = 0
 

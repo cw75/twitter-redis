@@ -11,9 +11,6 @@ import random
 
 import zmq
 
-BENCHMARK_START_PORT = 3000
-
-
 logging.basicConfig(filename='log_benchmark.txt', level=logging.INFO,
                     format='%(asctime)s %(message)s')
 
@@ -146,7 +143,7 @@ def run(create, sckt):
 ctx = zmq.Context(1)
 
 benchmark_start_socket = ctx.socket(zmq.PULL)
-benchmark_start_socket.bind('tcp://*:' + str(BENCHMARK_START_PORT + tid))
+benchmark_start_socket.bind('tcp://*:' + str(3000 + tid))
 
 while True:
     msg = benchmark_start_socket.recv_string()
@@ -159,7 +156,7 @@ while True:
         create = False
 
     sckt = ctx.socket(zmq.PUSH)
-    sckt.connect('tcp://' + resp_addr + ':3000')
+    sckt.connect('tcp://' + resp_addr + ':5000')
     total = run(create, sckt)
 
     if len(total) == 0:
