@@ -18,6 +18,7 @@ import time
 import zmq
 
 import cloudpickle as cp
+import numpy as np
 
 def print_latency_stats(data, ident, log=False, epoch=0):
     npdata = np.array(data)
